@@ -3,46 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Home page</title>
     <style>
-        body{
-            background-color: aquamarine;
-
-        }
-         .navbar{
-            width: 100%;
-            background-color: #333;
-            overflow: auto;
-
-        }
-        .navbar a{
-           
-            text-align: center;
-            font-size:32px;
-            color:white;
-            float: left;
-            transition: all 0.3s ease;
-            width: 20%;
-            padding: 12px 0;
+        .navbar {
+            width: 100px;
             justify-content: space-between;
+            background-color: #333;
+            display: none;
         }
-        .navbar a:hover
-        {
-            background-color:#000;
+
+        .navbar.show {
+            display: block;
         }
-        .active{
+
+        .navbar a {
+            display: block;
+            text-align: center;
+            padding: 18px;
+            transition: all 0.3s ease;
+            font-size: 32px;
+            color: white;
+        }
+
+        .navbar a:hover {
+            background-color: #000;
+        }
+
+        .active {
             background-color: #04AA6D;
+        }
+
+        .menu-btn {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .a1, .a2, .a3 {
+            width: 35px;
+            height: 5px;
+            background-color: black;
+            margin: 6px 0;
+        }
+
+        .change .a1 {
+            transform: translate(0, 11px) rotate(-45deg);
+        }
+
+        .change .a2 {
+            opacity: 0;
+        }
+
+        .change .a3 {
+            transform: translate(0, -11px) rotate(45deg);
         }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a class="active" href="#"><i class="fa fa-home"></i></a> 
-        <a href="#"><i class="fa fa-envelope"></i></a> 
-        <a href="#"><i class="fa fa-globe"></i></a>
-        <a href="#"><i class="fa fa-trash"></i></a> 
+    <div class="container">
+        <div class="menu-btn" onclick="changedto(this)">
+            <div class="a1"></div>
+            <div class="a2"></div>
+            <div class="a3"></div>
+        </div>
+        <div class="navbar">
+            <a class="active" href="#"><i class="fa fa-home"></i></a>
+            <a href="#"><i class="fa fa-envelope"></i></a>
+            <a href="#"><i class="fa fa-globe"></i></a>
+            <a href="#"><i class="fa fa-trash"></i></a>
+        </div>
     </div>
+    <script>
+        function changedto(x) {
+            console.log("changed");
+            x.classList.toggle("change");
+            document.querySelector('.navbar').classList.toggle('show');
+        }
+    </script>
 </body>
 </html>
